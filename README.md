@@ -1,7 +1,7 @@
 # wombat-text-editor
 
 <p align="center">
-  <img src="https://ibb.co/eSpuvf" />
+  <img src="https://preview.ibb.co/gbFZvf/b00m.png" alt="Wombatik Demo" />
 </p>
 
 ### Dead simple text editor, with multi-threading support. 
