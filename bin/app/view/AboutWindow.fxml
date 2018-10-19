@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="250.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="31.0" layoutY="14.0" text="INDOMIE ADALAH CANDI">
+         <font>
+            <Font name="Courier New Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="50.0" layoutY="77.0" text="Ya, memang ga ada isinya, karena window ini memang hanya untuk isengin orang saja" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
+      <Label layoutX="106.0" layoutY="125.0" text="Pokoknya, yang buat itu">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="151.0" text="CRISTOPHER - 2017730017" />
+      <Label layoutX="150.0" layoutY="168.0" text="Namchee" />
+      <Label layoutX="47.0" layoutY="204.0" text="Nyolong Source Code = Auto Gorok. Thx">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="42.0" text="Eh candu maksudnya">
+         <font>
+            <Font name="Courier New Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
