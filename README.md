@@ -17,6 +17,15 @@ It's impossible to determine a sentence without doing comprehensive analysis (Na
 
 Of course, JavaFX is using `Platform.runLater( // thread here )` to handle critical regions. It will ensure that any changes on UI will happen in the corresponding thread. JavaFX will reject other mutual exclusion algorithm.
 
+### Last Question, What's with `wombat`?
+
+To honour my _alma mater_, `wombat` is a kind of convention here.
+
 # TODOS
 
 - [x] Update the name. (Uuh.. I don't think a good name is necessary for this project)
+
+# Changelog
+
+- v1.1 - Added keyboard shortcut and line 'jump' features
+- v1.0 - Initial Release
