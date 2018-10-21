@@ -21,19 +21,20 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#newDoc" text="New" />
-                  <MenuItem mnemonicParsing="false" onAction="#load" text="Open" />
+                  <MenuItem fx:id="newButton" mnemonicParsing="false" onAction="#newDoc" text="New" />
+                  <MenuItem fx:id="openButton" mnemonicParsing="false" onAction="#load" text="Open" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                  <MenuItem fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#saveAs" text="Save As" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#setTimer" text="Set Timer" />
+                  <MenuItem fx:id="timerButton" mnemonicParsing="false" onAction="#setTimer" text="Set Timer" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+              <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#close" text="Close" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="View">
               <items>
+                  <MenuItem fx:id="lineButton" mnemonicParsing="false" onAction="#goToLine" text="Go To Line..." />
                   <MenuItem mnemonicParsing="false" onAction="#setFontSize" text="Set Font Size" />
                 <MenuItem fx:id="wrapText" mnemonicParsing="false" onAction="#toggleWrap" text="Toggle Text Wrapping" />
               </items>

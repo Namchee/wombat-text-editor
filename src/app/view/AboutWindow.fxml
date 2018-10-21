@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="260.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.AboutController">
    <children>
       <Label layoutX="31.0" layoutY="14.0" text="INDOMIE ADALAH CANDI">
          <font>
@@ -19,7 +20,7 @@
       </Label>
       <Label layoutX="106.0" layoutY="151.0" text="CRISTOPHER - 2017730017" />
       <Label layoutX="150.0" layoutY="168.0" text="Namchee" />
-      <Label layoutX="47.0" layoutY="204.0" text="Nyolong Source Code = Auto Gorok. Thx">
+      <Label layoutX="35.0" layoutY="204.0" text="Nyolong Source Code = Tidak Lulus SO. Thx">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -29,5 +30,11 @@
             <Font name="Courier New Bold Italic" size="18.0" />
          </font>
       </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="99.0" layoutY="225.0" text="Btw,      source codenya" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="129.0" layoutY="224.0" onAction="#link" text="ini" textAlignment="CENTER" />
    </children>
 </AnchorPane>

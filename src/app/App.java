@@ -1,5 +1,5 @@
 /**
- * WomTexTor Main Class
+ * Wombat Text Editor Main Class
  * 
  * @author Namchee
  * @version 1.0
@@ -9,6 +9,7 @@ package app;
 
 import java.io.IOException;
 
+import app.view.AboutController;
 import app.view.OverviewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -77,6 +78,9 @@ public class App extends Application {
 	        
 	        Scene aboutScene = new Scene(pane);
 	        aboutStage.setScene(aboutScene);
+	        
+	        AboutController controller = loader.getController();
+	        controller.setReference(this);
 	        
 	        aboutStage.showAndWait();
 	    } catch (IOException e) {

@@ -1,8 +1,8 @@
 /**
- * WomTexTor Controller File
+ * WombatTextEditor Controller File
  * 
  * @author Namchee
- * @version 1.0
+ * @version 1.1
  */
 
 package app.view;
@@ -27,6 +27,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -54,10 +57,29 @@ public class OverviewController {
     @FXML
     private MenuItem wrapText;
     
+    @FXML
+    private MenuItem newButton;
+    
+    @FXML
+    private MenuItem openButton;
+    
+    @FXML
+    private MenuItem saveButton;
+    
+    @FXML
+    private MenuItem exitButton;
+    
+    @FXML
+    private MenuItem timerButton;
+    
+    @FXML
+    private MenuItem lineButton;
+    
     private File source = null;
     
     private boolean saved = true;
     private boolean wrap = false;
+    private boolean control = false;
     
     private Timer timer;
     private App app;
@@ -67,6 +89,13 @@ public class OverviewController {
         this.count();      
         this.setTitle();
         this.setEvent();
+        
+        this.newButton.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN));
+        this.openButton.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
+        this.saveButton.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+        this.timerButton.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.CONTROL_DOWN));
+        this.lineButton.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
+        
         this.wrapText.setText(this.wrapText.getText() + " (not wrapped)");
         
         this.timer = new Timer();
@@ -88,17 +117,31 @@ public class OverviewController {
      * Basically, it will handle key press event on textarea
      * It will call count() method to process the string
      * And set saved to false
+     * Also, it avoids key combination problem by
+     * setting a boolean named 'control'
      */
     private void setEvent() {
         this.textLog.setOnKeyPressed(a -> {
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    count();
-                    saved = false;
-                    setTitle();
-                }
-            });
+            if (a.getCode().equals(KeyCode.CONTROL)) {
+                control = true;
+            }
+        });
+        this.textLog.setOnKeyReleased(a -> {
+            if (a.getCode().equals(KeyCode.CONTROL)) {
+                control = false;
+            }
+        });
+        this.textLog.setOnKeyTyped(a -> {
+            if (!control) {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        count();
+                        saved = false;
+                        setTitle();
+                    }
+                });
+            }
         });
     }
     
@@ -120,7 +163,7 @@ public class OverviewController {
                if (!saved) {
                    title += "*";
                }
-               title += " - WomTexTor";
+               title += " - Wombat Text Editor";
                ((Stage)textLog.getScene().getWindow()).setTitle(title);
             }   
         });
@@ -137,9 +180,9 @@ public class OverviewController {
         this.handleUnsaved();
         this.source = null;
         this.textLog.setText("");
-        saved = true;
         this.setTitle();
         this.count();
+        saved = true;
     }
     
     /**
@@ -338,6 +381,47 @@ public class OverviewController {
     @FXML
     private void showAbout() {
         this.app.showAboutWindow();
+    }
+    
+    /**
+     * goToLine()
+     * Positions the pointer on the selected line
+     */
+    @FXML
+    private void goToLine() {
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Go To Line...");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Destination : ");
+        
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            int targetLine = Integer.parseInt(result.get());
+            int currentLine = Integer.parseInt(this.lineCount.getText());
+            if (currentLine < targetLine || targetLine < 1) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Cannot find line");
+                
+                alert.showAndWait();
+            } else {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        int count = 1;
+                        String[] arr = textLog.getText().split("");
+                        for (int i = 0; i < arr.length; i++) {
+                            if (count == targetLine) {
+                                textLog.positionCaret(i);
+                                break;
+                            }
+                            if (arr[i].equals("\n")) count++;
+                        }
+                    }
+                });
+            }
+        }
     }
     
     /**
